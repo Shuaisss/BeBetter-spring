@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 提供模拟数据
+ * 提供课程模拟数据
  * @author 86133
  *
  */

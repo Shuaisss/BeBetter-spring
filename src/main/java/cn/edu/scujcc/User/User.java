@@ -1,7 +1,7 @@
 package cn.edu.scujcc.User;
 import java.util.Date;
 public class User {
-	private String id;//用户编号  
+	private String id;// 用户编号  
 	private String username;//用户名
 	private String password;//密码
 	private String phone;//用户电话

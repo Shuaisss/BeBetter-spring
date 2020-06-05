@@ -11,7 +11,7 @@ import org.springframework.data.annotation.Id;
  */
 public class User {
 	@Id
-	private String id;// 用户编号  
+	private String id;// 用户编号  不创建 toString登录前后有变化
 	private String username;//用户名
 	private String password;//密码
 	private String phone;//用户电话

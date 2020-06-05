@@ -1,6 +1,5 @@
 package cn.edu.scujcc.Course;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -56,9 +55,25 @@ public class CourseService {
 		return toChange;
 	}
 	
+	public boolean deleteCourse(String id) {
+		boolean result = true;
+		for(Course c : this.course) {
+			if(id == c.getId()) {
+				this.course.remove(c);
+				result = true;
+				break;
+			}
+		}
+		return result;
+	}
+	
 	public Course creatCourse(Course c) {
 		c.setId(this.course.get(this.course.size()-1).getId()+1);
 		this.course.add(c);
 		return c;
+	}
+
+	public List<Course> getAllCourse() {
+		return this.course;
 	}
 }

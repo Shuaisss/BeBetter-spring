@@ -15,17 +15,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/course")
 public class CouresController {
+	
 	@Autowired
 	private CourseService service;
 	
 	@GetMapping
 	public List<Course> getAllCourse() {
-		return service.getAllCourse();
+		return this.service.getAllCourse();
 	}
 	
 	@GetMapping("/{id}")
 	public Course getCourse(@PathVariable String id) {
-		return service.getCourse(id);
+		return this.service.getCourse(id);
 	}
 	
 	/**
@@ -35,7 +36,12 @@ public class CouresController {
 	 */
 	@GetMapping("/{id}")
 	public ResponseEntity<String> deleteCourse(@PathVariable String id){
-		return ResponseEntity.ok().body("删除课程成功");
+		boolean result = this.service.deleteCourse(id);
+		if(result) {
+			return ResponseEntity.ok().body("删除课程成功");
+		}else {
+			return ResponseEntity.ok().body("删除课程失败");
+		}
 	}
 	/**
 	 * 新建一个频道
@@ -44,11 +50,11 @@ public class CouresController {
 	 */
 	@PostMapping
 	public Course creatCourse(@RequestBody Course c) {
-		return null;
+		return this.service.creatCourse(c);
 	}
 	
 	public Course updateCourse(@RequestBody Course c) {
-		return null;
+		return this.service.updateCourse(c);
 	}
 
 }

@@ -1,6 +1,16 @@
 package cn.edu.scujcc.User;
+
 import java.util.Date;
+
+import org.springframework.data.annotation.Id;
+
+/**
+ * 用户模型类
+ * @author Administrator
+ *
+ */
 public class User {
+	@Id
 	private String id;// 用户编号  
 	private String username;//用户名
 	private String password;//密码
@@ -10,6 +20,8 @@ public class User {
 	private Float bim;//用户体脂
 	private Float height;//用户身高
 	private Float weight;//用户体重
+	private Date lastlogin;//最后一次登录时间
+	private String lastip;//最后一次登录的ip
 	
 	@Override
 	public int hashCode() {
@@ -19,7 +31,8 @@ public class User {
 		result = prime * result + ((birthday == null) ? 0 : birthday.hashCode());
 		result = prime * result + ((gender == null) ? 0 : gender.hashCode());
 		result = prime * result + ((height == null) ? 0 : height.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((lastip == null) ? 0 : lastip.hashCode());
+		result = prime * result + ((lastlogin == null) ? 0 : lastlogin.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((phone == null) ? 0 : phone.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
@@ -55,10 +68,15 @@ public class User {
 				return false;
 		} else if (!height.equals(other.height))
 			return false;
-		if (id == null) {
-			if (other.id != null)
+		if (lastip == null) {
+			if (other.lastip != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} else if (!lastip.equals(other.lastip))
+			return false;
+		if (lastlogin == null) {
+			if (other.lastlogin != null)
+				return false;
+		} else if (!lastlogin.equals(other.lastlogin))
 			return false;
 		if (password == null) {
 			if (other.password != null)
@@ -84,12 +102,14 @@ public class User {
 	}
 	@Override
 	public String toString() {
-		return "UserService [" + (id != null ? "id=" + id + ", " : "")
+		return "User [" + (id != null ? "id=" + id + ", " : "")
 				+ (username != null ? "username=" + username + ", " : "")
 				+ (password != null ? "password=" + password + ", " : "")
 				+ (phone != null ? "phone=" + phone + ", " : "") + (gender != null ? "gender=" + gender + ", " : "")
 				+ (birthday != null ? "birthday=" + birthday + ", " : "") + (bim != null ? "bim=" + bim + ", " : "")
-				+ (height != null ? "height=" + height + ", " : "") + (weight != null ? "weight=" + weight : "") + "]";
+				+ (height != null ? "height=" + height + ", " : "") + (weight != null ? "weight=" + weight + ", " : "")
+				+ (lastlogin != null ? "lastlogin=" + lastlogin + ", " : "")
+				+ (lastip != null ? "lastip=" + lastip : "") + "]";
 	}
 	public String getId() {
 		return id;
@@ -145,5 +165,18 @@ public class User {
 	public void setWeight(Float weight) {
 		this.weight = weight;
 	}
+	public Date getLastlogin() {
+		return lastlogin;
+	}
+	public void setLastlogin(Date lastlogin) {
+		this.lastlogin = lastlogin;
+	}
+	public String getLastip() {
+		return lastip;
+	}
+	public void setLastip(String lastip) {
+		this.lastip = lastip;
+	}
+	
 	
 }

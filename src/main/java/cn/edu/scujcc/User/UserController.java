@@ -17,14 +17,19 @@ public class UserController {
 	private UserService service;
 	
 	@PostMapping("/register") //与user拼接
-	public User register(@RequestBody User u) {//@RequestBody将用户从body中传出来
-		User result = null;
+	public Response register(@RequestBody User u) {//@RequestBody将用户从body中传出来
+		Response result =  new Response();
 		logger.debug("用户注册:"+u);//在user中要先写同string否则打印无意义
 		try {
-			result = service.register(u);
+			User saved =service.register(u);
+			result.setStatus(Response.STATUS_OK);
+			result.setData(saved);//将保存好的用户当成数据返回
 		} catch (UserExistException e) {//catch 一旦出错 就执行
 			logger.error("用户已存在，不能注册。",e);
-		}//调用service的注册 
+			Response r = new Response();
+			r.setStatus(Response.STATUS_ERROR);
+			r.setMessage("用户已存在，不能注册。");//用户可以看到错误信息
+		} 
 		//如果失败告诉用户
 		return result;
 	}

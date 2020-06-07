@@ -30,4 +30,16 @@ public class UserService {
 		}
 		return result;
 	}
+	
+	/**
+	 * 用户登录
+	 * @param user
+	 * @return
+	 */
+	public User login(String u,String p) {//传用户名密码
+		User result = null;
+		result = repo.findOneByUsernameAndPassword(u, p);//根据用户名密码查找
+		return result;
+	}
+
 }

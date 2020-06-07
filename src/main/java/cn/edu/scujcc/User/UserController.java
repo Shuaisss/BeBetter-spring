@@ -33,5 +33,20 @@ public class UserController {
 		//如果失败告诉用户
 		return result;
 	}
+	
+	public Response login(String username,String password) {
+		Response result =  new Response();
+		User saved =  service.login(username,password);//User有值 说明用户名密码正确  为空 说明错误 下面进行判断
+		if(saved != null) {//登录成功
+			//根据用户名把用户找回来 
+			result.setStatus(Response.STATUS_OK);
+			result.setData(saved);
+		}else {//登录失败
+			logger.error("登录失败");
+			result.setStatus(Response.STATUS_ERROR);
+			result.setMessage("密码错误");
+		}
+		return result;
+	}
 
 }

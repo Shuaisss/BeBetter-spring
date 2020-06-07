@@ -20,7 +20,12 @@ public class UserController {
 	public User register(@RequestBody User u) {//@RequestBody将用户从body中传出来
 		User result = null;
 		logger.debug("用户注册:"+u);//在user中要先写同string否则打印无意义
-		result = service.register(u);//调用service的注册
+		try {
+			result = service.register(u);
+		} catch (UserExistException e) {//catch 一旦出错 就执行
+			logger.error("用户已存在，不能注册。",e);
+		}//调用service的注册 
+		//如果失败告诉用户
 		return result;
 	}
 

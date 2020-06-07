@@ -3,6 +3,8 @@ package cn.edu.scujcc.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,7 +36,8 @@ public class UserController {
 		return result;
 	}
 	
-	public Response login(String username,String password) {
+	@GetMapping("/login/{username}/{password}") //添加路径 {可变量}
+	public Response login(@PathVariable String username,@PathVariable String password) {//注入路径变量  
 		Response result =  new Response();
 		User saved =  service.login(username,password);//User有值 说明用户名密码正确  为空 说明错误 下面进行判断
 		if(saved != null) {//登录成功

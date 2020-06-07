@@ -1,60 +1,60 @@
-package cn.edu.scujcc.Course;
-
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-
-@RestController
-@RequestMapping("/course")
-public class CouresController {
-	
-	@Autowired
-	private CourseService service;
-	
-	@GetMapping
-	public List<Course> getAllCourse() {
-		return this.service.getAllCourse();
-	}
-	
-	@GetMapping("/{id}")
-	public Course getCourse(@PathVariable String id) {
-		return this.service.getCourse(id);
-	}
-	
-	/**
-	 * É¾³ýÒ»¸öÖ¸¶¨µÄ¿Î³Ì
-	 * @param id
-	 * @return
-	 */
-	@GetMapping("/{id}")
-	public ResponseEntity<String> deleteCourse(@PathVariable String id){
-		boolean result = this.service.deleteCourse(id);
-		if(result) {
-			return ResponseEntity.ok().body("É¾³ý¿Î³Ì³É¹¦");
-		}else {
-			return ResponseEntity.ok().body("É¾³ý¿Î³ÌÊ§°Ü");
-		}
-	}
-	/**
-	 * ÐÂ½¨Ò»¸öÆµµÀ
-	 * @param c ÐÂ½¨ÆµµÀµÄÊý¾Ý
-	 * @return ±£´æºóµÄÊý¾Ý
-	 */
-	@PostMapping
-	public Course creatCourse(@RequestBody Course c) {
-		return this.service.creatCourse(c);
-	}
-	
-	public Course updateCourse(@RequestBody Course c) {
-		return this.service.updateCourse(c);
-	}
-
-}
+//package cn.edu.scujcc.Course;
+//
+//import java.util.List;
+//
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.http.ResponseEntity;
+//import org.springframework.web.bind.annotation.GetMapping;
+//import org.springframework.web.bind.annotation.PathVariable;
+//import org.springframework.web.bind.annotation.PostMapping;
+//import org.springframework.web.bind.annotation.RequestBody;
+//import org.springframework.web.bind.annotation.RequestMapping;
+//import org.springframework.web.bind.annotation.RestController;
+//
+//
+//@RestController
+//@RequestMapping("/course")
+//public class CouresController {
+//	
+//	@Autowired
+//	private CourseService service;
+//	
+//	@GetMapping
+//	public List<Course> getAllCourse() {
+//		return this.service.getAllCourse();
+//	}
+//	
+//	@GetMapping("/{id}")
+//	public Course getCourse(@PathVariable String id) {
+//		return this.service.getCourse(id);
+//	}
+//	
+//	/**
+//	 * É¾ï¿½ï¿½Ò»ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½
+//	 * @param id
+//	 * @return
+//	 */
+//	@GetMapping("/{id}")
+//	public ResponseEntity<String> deleteCourse(@PathVariable String id){
+//		boolean result = this.service.deleteCourse(id);
+//		if(result) {
+//			return ResponseEntity.ok().body("É¾ï¿½ï¿½ï¿½Î³Ì³É¹ï¿½");
+//		}else {
+//			return ResponseEntity.ok().body("É¾ï¿½ï¿½ï¿½Î³ï¿½Ê§ï¿½ï¿½");
+//		}
+//	}
+//	/**
+//	 * ï¿½Â½ï¿½Ò»ï¿½ï¿½Æµï¿½ï¿½
+//	 * @param c ï¿½Â½ï¿½Æµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//	 * @return ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//	 */
+//	@PostMapping
+//	public Course creatCourse(@RequestBody Course c) {
+//		return this.service.creatCourse(c);
+//	}
+//	
+//	public Course updateCourse(@RequestBody Course c) {
+//		return this.service.updateCourse(c);
+//	}
+//
+//}

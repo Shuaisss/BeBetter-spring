@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
 	@Autowired //java自动注入
 	private UserRepository repo;//定义实义变量，java中如果只定义 默认为空指针
-	private static final Logger logger = LoggerFactory.getLogger(UserService.class);//确认导入为org.slf4j 日志 logger
+	private static final Logger logger = LoggerFactory.getLogger(UserService.class);  //确认导入为org.slf4j 日志 logger
 	
 	//用户注册功能 公有 希望注册后返回信息
 	/**

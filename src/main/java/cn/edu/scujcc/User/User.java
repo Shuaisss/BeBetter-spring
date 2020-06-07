@@ -17,9 +17,9 @@ public class User {
 	private String phone;//用户电话
 	private String gender;//用户性别
 	private Date birthday;//用户生日
-	private Float bim;//用户体脂
-	private Float height;//用户身高
-	private Float weight;//用户体重
+	private String bim;//用户体脂
+	private String height;//用户身高
+	private String weight;//用户体重
 	private Date lastlogin;//最后一次登录时间
 	private String lastip;//最后一次登录的ip
 	
@@ -147,22 +147,22 @@ public class User {
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
-	public Float getBim() {
+	public String getBim() {
 		return bim;
 	}
-	public void setBim(Float bim) {
+	public void setBim(String bim) {
 		this.bim = bim;
 	}
-	public Float getHeight() {
+	public String getHeight() {
 		return height;
 	}
-	public void setHeight(Float height) {
+	public void setHeight(String height) {
 		this.height = height;
 	}
-	public Float getWeight() {
+	public String getWeight() {
 		return weight;
 	}
-	public void setWeight(Float weight) {
+	public void setWeight(String weight) {
 		this.weight = weight;
 	}
 	public Date getLastlogin() {

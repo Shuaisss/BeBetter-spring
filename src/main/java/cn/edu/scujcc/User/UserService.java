@@ -19,7 +19,7 @@ public class UserService {
 	 */
 	public User register(User user) { //如果user不在一个包需要导入
 		User result = null;
-		result = repo.save(user);
+		result = repo.save(user); 
 		return result;
 	}
 }

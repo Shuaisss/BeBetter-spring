@@ -4,11 +4,11 @@ import org.springframework.data.annotation.Id;
 
 public class Course {
 	@Id
-	private String id;//课程编号
-	private String name;//课程名称
-	private String cover;//课程封面
-	private String price;//课程价格
-	private String url;//获取课程的网址
+	private String id;//璇剧▼缂栧彿
+	private String name;//璇剧▼鍚嶇О
+	private String cover;//璇剧▼灏侀潰
+	private String price;//璇剧▼浠锋牸
+	private String url;//鑾峰彇璇剧▼鐨勭綉鍧�址
 	public String getId() {
 		return id;
 	}

@@ -5,11 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-/**
- * Ìá¹©¿Î³ÌÄ£ÄâÊý¾Ý
- * @author 86133
- *
- */
+
 @Service
 public class CourseService {
 	@Autowired
@@ -20,14 +16,14 @@ public class CourseService {
 		for(int i = 0;i<10;i++) {
 			Course c = new Course();
 			c.setId(""+(i + 1));
-			c.setName("µÚ"+(i+1)+"½Ú¿Î³Ì");
+			c.setName("ç¬¬"+(i+1)+"èŠ‚è¯¾ç¨‹");
 			c.setPrice(""+(i+1)*(i+1));
 			c.setUrl("http://baidu.com");
 		}
 	}
 	
 	/**
-	 * ÐÂ½¨Ò»¸öÆµµÀ
+	 * æ–°å»ºä¸€ä¸ªé¢‘é“
 	 * @param id
 	 * @return
 	 */
@@ -44,7 +40,7 @@ public class CourseService {
 	}
 	
 	/**
-	 * ¸üÐÂÒ»¸öÆµµÀ
+	 * æ›´æ–°ä¸€ä¸ªé¢‘é“
 	 * @param c
 	 * @return
 	 */

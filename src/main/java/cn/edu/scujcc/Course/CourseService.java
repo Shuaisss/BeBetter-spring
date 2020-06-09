@@ -76,4 +76,10 @@ public class CourseService {
 	public List<Course> getAllCourse() {
 		return this.course;
 	}
+
+	//根据课程名称查找课程
+	public List<Course> searchTitle(String title) {
+		// TODO Auto-generated method stub
+		return repo.findByTitle(title);
+	}
 }

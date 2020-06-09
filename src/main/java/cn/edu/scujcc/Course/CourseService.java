@@ -2,6 +2,7 @@ package cn.edu.scujcc.Course;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class CourseService {
+	@Autowired
+	private CourseRepository repo;
 	private List<Course> course;
 	
 	public CourseService() {
@@ -68,9 +71,10 @@ public class CourseService {
 	}
 	
 	public Course creatCourse(Course c) {
-		c.setId(this.course.get(this.course.size()-1).getId()+1);
-		this.course.add(c);
-		return c;
+//		c.setId(this.course.get(this.course.size()-1).getId()+1);
+//		this.course.add(c);
+//		return c;
+		return repo.save(c);
 	}
 
 	public List<Course> getAllCourse() {

@@ -1,6 +1,9 @@
 package cn.edu.scujcc.Course;
 
+import org.springframework.data.annotation.Id;
+
 public class Course {
+	@Id
 	private String id;//课程编号
 	private String name;//课程名称
 	private String cover;//课程封面

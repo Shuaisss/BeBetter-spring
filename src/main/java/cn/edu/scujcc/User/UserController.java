@@ -20,9 +20,6 @@ public class UserController {
 	@Autowired 
 	private UserService service;
 	
-	@Autowired
-	private CacheManager cacheManager;
-	
 	@PostMapping("/register") //与user拼接
 	public Response register(@RequestBody User u) {//@RequestBody将用户从body中传出来
 		Response result =  new Response();
@@ -47,11 +44,10 @@ public class UserController {
 		User saved =  service.login(username,password);//User有值 说明用户名密码正确  为空 说明错误 下面进行判断
 		if(saved != null) {//登录成功
 			//根据用户名把用户找回来 
+			String uid = service.checkIn(username);
 			result.setStatus(Response.STATUS_OK);
 			result.setData(saved);
-			//登录成功的标志
-			Cache cache = cacheManager.getCache("users");
-			cache.put("token", username);
+			result.setMessage("登录成功："+uid);
 		}else {//登录失败
 			logger.error("登录失败");
 			result.setStatus(Response.STATUS_ERROR);

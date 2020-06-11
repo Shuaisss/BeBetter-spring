@@ -5,26 +5,28 @@ import java.util.Date;
 
 import org.springframework.data.annotation.Id;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 /**
  * 用户模型类
  * @author Administrator
  *
  */
 public class User implements Serializable{
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 5106393439465493787L;
+	public static final String CACHE_NAME = "users";
 	@Id
 	private String id;// 用户编号  不创建 toString登录前后有变化
 	private String username;//用户名
 	private String password;//密码
 	private String phone;//用户电话
 	private String gender;//用户性别
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")//添加日期格式要求
 	private Date birthday;//用户生日
 	private Float bim;//用户体脂
 	private Float height;//用户身高
 	private Float weight;//用户体重
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private Date lastlogin;//最后一次登录时间
 	private String lastip;//最后一次登录的ip
 	

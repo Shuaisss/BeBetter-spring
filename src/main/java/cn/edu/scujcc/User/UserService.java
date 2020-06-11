@@ -3,13 +3,19 @@ package cn.edu.scujcc.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.Cache;
+import org.springframework.cache.CacheManager;
 import org.springframework.stereotype.Service;
+import org.springframework.util.DigestUtils;
+
 
 @Service  //注册成为Spring成员 
 public class UserService {
 	@Autowired //java自动注入
 	private UserRepository repo;//定义实义变量，java中如果只定义 默认为空指针
 	private static final Logger logger = LoggerFactory.getLogger(UserService.class);  //确认导入为org.slf4j 日志 logger
+	@Autowired
+	private CacheManager cacheManager;
 	
 	//用户注册功能 公有 希望注册后返回信息
 	/**
@@ -25,7 +31,7 @@ public class UserService {
 			result = repo.save(user); 
 		}else {
 			//用户已存在
-			logger.error("用户"+user.getUsername()+"已存在。");
+			logger.error("用户" + user.getUsername()+"已存在。");
 			throw new UserExistException();//发生错误后抛出错误
 		}
 		return result;
@@ -42,4 +48,13 @@ public class UserService {
 		return result;
 	}
 
+	public String checkIn(String username) {
+		String uid = "";
+		uid = DigestUtils.md5DigestAsHex(username.getBytes());
+		
+		Cache cache = cacheManager.getCache(User.CACHE_NAME);
+		cache.put(uid,username);
+		
+		return uid;
+	}
 }

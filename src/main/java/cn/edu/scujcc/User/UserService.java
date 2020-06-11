@@ -50,8 +50,10 @@ public class UserService {
 
 	public String checkIn(String username) {
 		String uid = "";
+		Long ts = System.currentTimeMillis();
+		username = username + ts;
 		uid = DigestUtils.md5DigestAsHex(username.getBytes());
-		
+		logger.debug(username + "经过md5加密后："+uid);
 		Cache cache = cacheManager.getCache(User.CACHE_NAME);
 		cache.put(uid,username);
 		

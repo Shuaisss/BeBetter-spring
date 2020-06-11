@@ -19,7 +19,7 @@ import cn.edu.scujcc.User.UserService;
  * @author Administrator
  *
  */
-@Component//考点
+@Component
 public class AuthInterceptor implements HandlerInterceptor{
 	
 	@Autowired

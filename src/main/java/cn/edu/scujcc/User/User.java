@@ -1,5 +1,6 @@
 package cn.edu.scujcc.User;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import org.springframework.data.annotation.Id;
@@ -9,7 +10,11 @@ import org.springframework.data.annotation.Id;
  * @author Administrator
  *
  */
-public class User {
+public class User implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5106393439465493787L;
 	@Id
 	private String id;// 用户编号  不创建 toString登录前后有变化
 	private String username;//用户名

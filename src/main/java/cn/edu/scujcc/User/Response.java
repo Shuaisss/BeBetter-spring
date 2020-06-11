@@ -1,6 +1,9 @@
 package cn.edu.scujcc.User;
 
-public class Response {
+import java.io.Serializable;
+
+public class Response implements Serializable{
+	private static final long serialVersionUID = 4059578639807608549L;
 	//定义一些常见的常量
 	public final static int STATUS_OK = 1;
 	public final static int STATUS_ERROR = -1;

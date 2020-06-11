@@ -3,6 +3,8 @@ package cn.edu.scujcc.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.Cache;
+import org.springframework.cache.CacheManager;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +19,9 @@ public class UserController {
 	
 	@Autowired 
 	private UserService service;
+	
+	@Autowired
+	private CacheManager cacheManager;
 	
 	@PostMapping("/register") //与user拼接
 	public Response register(@RequestBody User u) {//@RequestBody将用户从body中传出来
@@ -44,6 +49,9 @@ public class UserController {
 			//根据用户名把用户找回来 
 			result.setStatus(Response.STATUS_OK);
 			result.setData(saved);
+			//登录成功的标志
+			Cache cache = cacheManager.getCache("users");
+			cache.put("token", username);
 		}else {//登录失败
 			logger.error("登录失败");
 			result.setStatus(Response.STATUS_ERROR);

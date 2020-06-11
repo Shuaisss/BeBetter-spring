@@ -15,9 +15,7 @@ import cn.edu.scujcc.User.UserService;
 
 /**
  * 认证拦截器，拦截掉未登录的请求，以保护后台应用程序
- * 
  * @author Administrator
- *
  */
 @Component
 public class AuthInterceptor implements HandlerInterceptor{

@@ -38,7 +38,7 @@ public class UserController {
 	
 	@GetMapping("/login/{username}/{password}") //添加路径 {可变量}
 	public Response<String> login(@PathVariable("username") String username,@PathVariable("password") String password) {//注入路径变量  
-		Response<String> result =  new Response();
+		Response<String> result =  new Response<>();
 		User saved =  service.login(username,password);//User有值 说明用户名密码正确  为空 说明错误 下面进行判断
 		if(saved != null) {//登录成功
 			//根据用户名把用户找回来 

@@ -5,7 +5,7 @@ import org.springframework.data.annotation.Id;
 public class Course {
 	@Id
 	private String id;//课程编号
-	private String name;//课程名称
+	private String title;//课程名称
 	private String cover;//课程封面
 	private String price;//课程价格
 	private String url;//获取课程的网址ַ
@@ -15,11 +15,11 @@ public class Course {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+	public String getTitle() {
+		return title;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	public String getCover() {
 		return cover;
@@ -45,7 +45,7 @@ public class Course {
 		int result = 1;
 		result = prime * result + ((cover == null) ? 0 : cover.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		result = prime * result + ((price == null) ? 0 : price.hashCode());
 		result = prime * result + ((url == null) ? 0 : url.hashCode());
 		return result;
@@ -69,10 +69,10 @@ public class Course {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (name == null) {
-			if (other.name != null)
+		if (title == null) {
+			if (other.title != null)
 				return false;
-		} else if (!name.equals(other.name))
+		} else if (!title.equals(other.title))
 			return false;
 		if (price == null) {
 			if (other.price != null)
@@ -90,7 +90,7 @@ public class Course {
 	@Override
 	public String toString() {
 		return "Course [id=" + id 
-				+ ", name=" + name 
+				+ ", title=" + title 
 				+ ", cover=" + cover 
 				+ ", price=" + price 
 				+ ", url=" + url 

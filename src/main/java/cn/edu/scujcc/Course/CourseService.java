@@ -56,8 +56,8 @@ public class CourseService {
 		Course saved = getChannel(c.getId());
 		if(saved != null) {
 			//方法一:自己一个一个的复制数据
-			if(c.getName() != null) {
-				saved.setName(c.getName());
+			if(c.getTitle() != null) {
+				saved.setTitle(c.getTitle());
 			}
 			if(c.getPrice() != null) {
 				saved.setPrice(c.getPrice());
@@ -95,7 +95,7 @@ public class CourseService {
 	public Course updateCourse (Course c) {
 		Course toChange = getCourse(c.getId());
 		if(toChange != null) {
-			toChange.setName(c.getName());
+			toChange.setTitle(c.getTitle());
 			toChange.setPrice(c.getPrice());
 			toChange.setUrl(c.getUrl());
 		}
